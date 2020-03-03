@@ -6,5 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Forms</title>
   </head>
-  <body></body>
+  <body>
+    <!-- <form name="my">
+      <input name="" value="">
+      <input name="" value="">
+    </form> -->
+
+    <!-- <form onsubmit="alert('submit!');return false">
+      First: Enter in the input field <input type="text" value="text"><br>
+      Second: Click "submit": <input type="submit" value="Submit">
+    </form> -->
+
+    <!-- We want create a Signup page Include 1. FullName 2. Email 3. Password  and a Sign Up button-->
+    <!-- First we need a input   -->
+    <form action="" name="form" onsubmit="return signUpForm()">
+      <input class="name" type="text" placeholder="FullName" name="name" />
+      <input class="email" type="text" placeholder="Email" name="email" />
+      <input
+        class="password"
+        type="text"
+        placeholder="Password"
+        name="password"
+      />
+      <input class="submitbtn" type="submit" value="Sign Up" />
+    </form>
+    <script src="main.js"></script>
+  </body>
 </html>
