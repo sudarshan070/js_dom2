@@ -5,11 +5,10 @@ var addBooks = document.querySelector(".add-book");
 var checkbox = document.querySelector("#hide");
 var btn = document.querySelector("button");
 var ul = document.querySelector("ul");
-var arr = [];
+var arr = JSON.parse(localStorage.getItem("book")) || [];
 
 function addBook(event) {
   // obj book name and id
-
   event.preventDefault();
   if (addBooks.value === "") {
     alert("Enter book name");
@@ -18,11 +17,12 @@ function addBook(event) {
     bookName: addBooks.value,
     id: Date.now()
   };
+
   //   console.log(todo);
   arr.push(todo);
-
+  localStorage.setItem("book", JSON.stringify(arr));
   viewCall(arr);
-  console.log(arr);
+  // console.log(arr);
 }
 
 function viewCall(arr) {
@@ -50,6 +50,8 @@ function deleteBook(event) {
   console.log(event.target.dataset.id);
   arr = arr.filter(todo => !(event.target.dataset.id == todo.id));
   console.log(arr);
+
+  localStorage.setItem("book", JSON.stringify(arr));
   viewCall(arr);
 }
 
@@ -60,6 +62,7 @@ function hideBooks(event) {
   } else {
     ul.style.display = "none";
   }
+  localStorage.setItem("book", JSON.stringify(arr));
   viewCall(arr);
 }
 
@@ -69,7 +72,9 @@ function searchBook(event) {
   var searchArr = arr.filter(todo =>
     todo.bookName.toLowerCase().includes(event.target.value)
   );
+
   viewCall(searchArr);
+  localStorage.setItem("book", JSON.stringify(arr));
 }
 
 checkbox.addEventListener("click", hideBooks);
